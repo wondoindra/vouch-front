@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import A from "../pages/A";
-import B from "../pages/B";
-import C from "../pages/C";
+import Home from "../pages/Home";
+import Create from "../pages/Create";
+import Delete from "../pages/Delete";
+import Update from "../pages/Update";
 import {
   Navbar,
   NavbarToggler,
@@ -34,29 +35,35 @@ export default class Navigation extends Component {
       <HashRouter>
         <div>
           <Navbar color="dark" dark expand="md">
-            <NavbarBrand href="#"> ReactStrap </NavbarBrand>
+            <NavbarBrand href="#"> Vouch </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink to="/">
-                  <Button color="dark"> A </Button>
+                  <Button color="dark"> Tickets </Button>
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/B">
-                  <Button color="dark"> B </Button>
+                <NavLink to="/Create">
+                  <Button color="dark"> Create </Button>
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/C">
-                  <Button color="dark"> C </Button>
+                <NavLink to="/Update">
+                  <Button color="dark"> Update </Button>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/Delete">
+                  <Button color="dark"> Delete </Button>
                 </NavLink>
               </NavItem>
             </Nav>
           </Navbar>
-          <Route path="/B" component={B} />
-          <Route path="/C" component={C} />
-          <Route exact path="/" component={A} />
+          <Route path="/Create" component={Create} />
+          <Route path="/Update" component={Update} />
+          <Route path="/Delete" component={Delete} />
+          <Route exact path="/" component={Home} />
         </div>
       </HashRouter>
     );

@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 
-export default class B extends Component {
+export default class Update extends Component {
   constructor(props) {
     super(props);
 
@@ -39,27 +39,26 @@ export default class B extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const URL = "https://reqres.in/api/login";
+    const URL = "http://localhost:8080/ticket/update";
     const data = {
-      email: this.state.email,
-      password: this.state.password
+      name: this.state.name,
+      status: this.state.status,
+      logs: this.state.logs
     };
 
     await axios
       .post(URL, data)
       .then(response => {
-        console.log(response);
         this.setState({
-          title: "Login success",
-          message: response.data.token,
+          title: "Ticket added",
+          message: response.data.status,
           modal: true
         });
       })
       .catch(error => {
-        console.log(error.response.data.error);
         this.setState({
-          title: "Login failed",
-          message: error.response.data.error,
+          title: "Failed",
+          message: error.response.data,
           modal: true
         });
       });
@@ -70,25 +69,34 @@ export default class B extends Component {
       <Container>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label>Email</Label>
+            <Label>Ticket name</Label>
             <Input
-              type="email"
-              name="email"
-              placeholder="Email"
+              type="text"
+              name="name"
+              placeholder="Ticket name"
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label>Password</Label>
+            <Label>Ticket log</Label>
+            <Input type="select" name="status" onChange={this.handleChange}>
+              <option>Open</option>
+              <option>Active</option>
+              <option>Failed</option>
+              <option>Closed</option>
+            </Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>Ticket log</Label>
             <Input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="text"
+              name="logs"
+              placeholder="Ticket log"
               onChange={this.handleChange}
             />
           </FormGroup>
           <Button type="submit" onClick={this.handleClick}>
-            Login
+            Update ticket
           </Button>
         </Form>
         <Modal
