@@ -39,7 +39,7 @@ export default class Delete extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const URL = "http://localhost:8080/ticket/delete";
+    const URL = "https://vouch-backend.herokuapp.com/ticket/delete";
     const data = {
       _id: this.state._id
     };

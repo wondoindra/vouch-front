@@ -39,7 +39,7 @@ export default class Update extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const URL = "http://localhost:8080/ticket/update";
+    const URL = "https://vouch-backend.herokuapp.com/ticket/update";
     const data = {
       name: this.state.name,
       status: this.state.status,

@@ -39,7 +39,7 @@ export default class Create extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const URL = "http://localhost:8080/ticket/add";
+    const URL = "https://vouch-backend.herokuapp.com/ticket/add";
     const data = {
       name: this.state.name,
       logs: this.state.logs

@@ -20,7 +20,7 @@ class Home extends Component {
 
     this.state = {
       tickets: [],
-      URL: "http://localhost:8080/tickets/"
+      URL: "https://vouch-backend.herokuapp.com/tickets/"
     };
   }
 
@@ -30,7 +30,9 @@ class Home extends Component {
 
   handleShow = async () => {
     await this.setState({ active: !this.state.active });
-    await this.setState({ URL: "http://localhost:8080/tickets/" });
+    await this.setState({
+      URL: "https://vouch-backend.herokuapp.com/tickets/"
+    });
     await this.getTickets();
   };
 
@@ -44,7 +46,7 @@ class Home extends Component {
       status: this.state.status
     };
     await this.setState({
-      URL: `http://localhost:8080/tickets/${data.status}`
+      URL: `https://vouch-backend.herokuapp.com/tickets/${data.status}`
     });
     await this.getTickets();
   };
