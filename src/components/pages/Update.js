@@ -47,10 +47,10 @@ export default class Update extends Component {
     };
 
     await axios
-      .post(URL, data)
+      .put(URL, data)
       .then(response => {
         this.setState({
-          title: "Ticket added",
+          title: "Ticket update success",
           message: response.data.status,
           modal: true
         });

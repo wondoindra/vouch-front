@@ -49,7 +49,7 @@ export default class Create extends Component {
       .post(URL, data)
       .then(response => {
         this.setState({
-          title: "Ticket added",
+          title: "Ticket create success",
           message: response.data.status,
           modal: true
         });

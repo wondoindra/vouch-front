@@ -41,14 +41,14 @@ export default class Delete extends Component {
 
     const URL = "https://vouch-backend.herokuapp.com/ticket/delete";
     const data = {
-      _id: this.state._id
+      id: this.state.id
     };
 
     await axios
       .post(URL, data)
       .then(response => {
         this.setState({
-          title: "Ticket deleted",
+          title: "Ticket delete success",
           message: response.data.status,
           modal: true
         });
@@ -70,7 +70,7 @@ export default class Delete extends Component {
             <Label>Ticket id</Label>
             <Input
               type="text"
-              name="_id"
+              name="id"
               placeholder="Ticket id"
               onChange={this.handleChange}
             />
