@@ -9,7 +9,10 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  Row,
+  Col,
+  CardTitle
 } from "reactstrap";
 import axios from "axios";
 
@@ -64,20 +67,27 @@ export default class Delete extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mt-4">
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label>Ticket id</Label>
-            <Input
-              type="text"
-              name="id"
-              placeholder="Ticket id"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <Button type="submit" onClick={this.handleClick}>
-            Delete ticket
-          </Button>
+          <Row>
+            <Col />
+            <Col xs="6">
+              <CardTitle className="text-center m-3">Delete ticket</CardTitle>
+              <FormGroup>
+                <Label>Ticket id</Label>
+                <Input
+                  type="text"
+                  name="id"
+                  placeholder="Ticket id"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <Button type="submit" onClick={this.handleClick}>
+                Delete ticket
+              </Button>
+            </Col>
+            <Col />
+          </Row>
         </Form>
         <Modal
           isOpen={this.state.modal}

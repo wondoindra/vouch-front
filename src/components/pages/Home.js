@@ -5,13 +5,13 @@ import {
   ButtonGroup,
   Container,
   Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
+  CardHeader,
   Form,
   FormGroup,
-  Input
+  Input,
+  Table,
+  Row,
+  Col
 } from "reactstrap";
 
 class Home extends Component {
@@ -60,20 +60,32 @@ class Home extends Component {
       .then(data => {
         let tickets = data.data.map(list => {
           return (
-            <Card
-              className="text-center"
-              body
-              inverse
-              color="info"
-              key={list._id}
-            >
-              <CardBody>
-                <CardTitle>Ticket no: {list._id}</CardTitle>
-                <CardTitle>{list.name}</CardTitle>
-                <CardSubtitle>{list.status}</CardSubtitle>
-                <CardText>{list.logs}</CardText>
-              </CardBody>
-            </Card>
+            <Row className="mb-4">
+              <Col />
+              <Col xs="6">
+                <Card outline color="secondary" key={list._id}>
+                  <CardHeader tag="h4">{list.name}</CardHeader>
+                  <Table responsive borderless>
+                    <thead />
+                    <tbody>
+                      <tr>
+                        <th scope="row">Ticket No :</th>
+                        <td>{list._id}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Status :</th>
+                        <td>{list.status}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Logs :</th>
+                        <td>{list.logs}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </Card>
+              </Col>
+              <Col />
+            </Row>
           );
         });
         this.setState({ tickets: tickets });
@@ -86,26 +98,32 @@ class Home extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mt-4">
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Input type="select" name="status" onChange={this.handleChange}>
-              <option>Open</option>
-              <option>Active</option>
-              <option>Failed</option>
-              <option>Closed</option>
-            </Input>
-            <ButtonGroup className="mt-3">
-              <Button size="lg" type="submit" onClick={this.handleClick}>
-                Sort ticket
-              </Button>
-              <Button size="lg" onClick={this.handleShow}>
-                Show ticket
-              </Button>
-            </ButtonGroup>
-          </FormGroup>
+          <Row>
+            <Col />
+            <Col xs="6">
+              <FormGroup>
+                <Input type="select" name="status" onChange={this.handleChange}>
+                  <option>Open</option>
+                  <option>Active</option>
+                  <option>Failed</option>
+                  <option>Closed</option>
+                </Input>
+                <ButtonGroup className="mt-3">
+                  <Button size="lg" type="submit" onClick={this.handleClick}>
+                    Sort ticket
+                  </Button>
+                  <Button size="lg" onClick={this.handleShow}>
+                    Show ticket
+                  </Button>
+                </ButtonGroup>
+              </FormGroup>
+            </Col>
+            <Col />
+          </Row>
+          <FormGroup className="mt-5">{this.state.tickets}</FormGroup>
         </Form>
-        {this.state.tickets}
       </Container>
     );
   }

@@ -9,7 +9,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Container
+  Container,
+  Row,
+  Col,
+  CardTitle
 } from "reactstrap";
 import axios from "axios";
 
@@ -66,38 +69,45 @@ export default class Update extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mt-4">
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label>Ticket name</Label>
-            <Input
-              type="text"
-              name="name"
-              placeholder="Ticket name"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label>Ticket log</Label>
-            <Input type="select" name="status" onChange={this.handleChange}>
-              <option>Open</option>
-              <option>Active</option>
-              <option>Failed</option>
-              <option>Closed</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label>Ticket log</Label>
-            <Input
-              type="text"
-              name="logs"
-              placeholder="Ticket log"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <Button type="submit" onClick={this.handleClick}>
-            Update ticket
-          </Button>
+          <Row>
+            <Col />
+            <Col xs="6">
+              <CardTitle className="text-center m-3">Update ticket</CardTitle>
+              <FormGroup>
+                <Label>Ticket name</Label>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Ticket name"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Ticket status</Label>
+                <Input type="select" name="status" onChange={this.handleChange}>
+                  <option>Open</option>
+                  <option>Active</option>
+                  <option>Failed</option>
+                  <option>Closed</option>
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <Label>Ticket log</Label>
+                <Input
+                  type="text"
+                  name="logs"
+                  placeholder="Ticket log"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <Button type="submit" onClick={this.handleClick}>
+                Update ticket
+              </Button>
+            </Col>
+            <Col />
+          </Row>
         </Form>
         <Modal
           isOpen={this.state.modal}
