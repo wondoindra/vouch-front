@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import Home from "../pages/Home";
-import Create from "../pages/Create";
-import Delete from "../pages/Delete";
-import Update from "../pages/Update";
 import {
   Navbar,
   NavbarToggler,
@@ -43,26 +40,8 @@ export default class Navigation extends Component {
                   <Button color="dark"> Tickets </Button>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink to="/Create">
-                  <Button color="dark"> Create </Button>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/Update">
-                  <Button color="dark"> Update </Button>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/Delete">
-                  <Button color="dark"> Delete </Button>
-                </NavLink>
-              </NavItem>
             </Nav>
           </Navbar>
-          <Route path="/Create" component={Create} />
-          <Route path="/Update" component={Update} />
-          <Route path="/Delete" component={Delete} />
           <Route exact path="/" component={Home} />
         </div>
       </HashRouter>
