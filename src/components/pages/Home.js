@@ -32,8 +32,8 @@ class Home extends Component {
       tickets: [],
       ticketlogs: [],
       reset: false,
-      logURL: "http://localhost:8080/logs/",
-      URL: "http://localhost:8080/tickets/",
+      logURL: "https://vouch-backend.herokuapp.com/logs/",
+      URL: "https://vouch-backend.herokuapp.com/tickets/",
       id: "",
       modal: false,
       modalconfirmation: false,
@@ -85,7 +85,7 @@ class Home extends Component {
   handleLogs = async ticketid => {
     await this.setState({
       reset: !this.state.reset,
-      logURL: `http://localhost:8080/logs/${ticketid}`
+      logURL: `https://vouch-backend.herokuapp.com/logs/${ticketid}`
     });
 
     await this.getLogs();
@@ -94,7 +94,7 @@ class Home extends Component {
   handleShow = async () => {
     await this.setState({ active: !this.state.active });
     await this.setState({
-      URL: "http://localhost:8080/tickets/"
+      URL: "https://vouch-backend.herokuapp.com/tickets/"
     });
     await this.getTickets();
   };
@@ -107,7 +107,7 @@ class Home extends Component {
     event.preventDefault();
 
     await this.setState({
-      URL: "http://localhost:8080/ticket/add"
+      URL: "https://vouch-backend.herokuapp.com/ticket/add"
     });
     const data = {
       name: this.state.name,
@@ -123,7 +123,7 @@ class Home extends Component {
           title: "Ticket create success",
           message: response.data.status,
           modal: true,
-          URL: "http://localhost:8080/tickets/",
+          URL: "https://vouch-backend.herokuapp.com/tickets/",
           collapse: false
         });
       })
@@ -132,7 +132,7 @@ class Home extends Component {
           title: "Failed",
           message: error.response.data,
           modal: true,
-          URL: "http://localhost:8080/tickets/",
+          URL: "https://vouch-backend.herokuapp.com/tickets/",
           collapse: false
         });
       });
@@ -143,7 +143,7 @@ class Home extends Component {
     event.preventDefault();
 
     await this.setState({
-      URL: `http://localhost:8080/ticket/update`
+      URL: `https://vouch-backend.herokuapp.com/ticket/update`
     });
     const data = {
       name: this.state.name,
@@ -158,7 +158,7 @@ class Home extends Component {
           title: "Ticket update success",
           message: response.data.status,
           modal: true,
-          URL: "http://localhost:8080/tickets/"
+          URL: "https://vouch-backend.herokuapp.com/tickets/"
         });
       })
       .catch(error => {
@@ -166,7 +166,7 @@ class Home extends Component {
           title: "Failed",
           message: error.response.data,
           modal: true,
-          URL: "http://localhost:8080/tickets/"
+          URL: "https://vouch-backend.herokuapp.com/tickets/"
         });
       });
     await this.getTickets();
@@ -175,7 +175,7 @@ class Home extends Component {
   handleDelete = async ticketid => {
     await this.setState({
       id: ticketid,
-      URL: "http://localhost:8080/ticket/delete"
+      URL: "https://vouch-backend.herokuapp.com/ticket/delete"
     });
 
     if (this.state.modalconfirmation) {
@@ -191,7 +191,7 @@ class Home extends Component {
             modal: true,
             modalconfirmation: !this.state.modalconfirmation,
             id: "",
-            URL: "http://localhost:8080/tickets/"
+            URL: "https://vouch-backend.herokuapp.com/tickets/"
           });
         })
         .catch(error => {
@@ -201,7 +201,7 @@ class Home extends Component {
             modal: true,
             modalconfirmation: !this.state.modalconfirmation,
             id: "",
-            URL: "http://localhost:8080/tickets/"
+            URL: "https://vouch-backend.herokuapp.com/tickets/"
           });
         });
       await this.getTickets();
@@ -239,7 +239,7 @@ class Home extends Component {
       status: this.state.status
     };
     await this.setState({
-      URL: `http://localhost:8080/tickets/${data.status}`
+      URL: `https://vouch-backend.herokuapp.com/tickets/${data.status}`
     });
     await this.getTickets();
   };
